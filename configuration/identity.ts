@@ -1,4 +1,4 @@
-export const OWNER_NAME: string = `Opeyemi Kayode`;
+export const OWNER_NAME: string = `Kayode`;
 export const OWNER_DESCRIPTION: string = `Seasoned Chef with over 30 years of experience`;
 
 export const AI_NAME: string = `Sweet Kay`;
