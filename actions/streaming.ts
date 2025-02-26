@@ -54,7 +54,7 @@ export async function handleOpenAIStream({
   const startTime = Date.now();
   const streamedResponse = await client.chat.completions.create({
     model: model_name,
-    messages: [{ role: "system", content: "Use document-based knowledge if available. If not, seamlessly provide an answer using general knowledge, without mentioning the source."}, ...messages],
+    messages: [{ role: "system", content: "Use document-based knowledge if available and mention the source. If not, seamlessly provide an answer using general knowledge."}, ...messages],
     stream: true,
     temperature,
   });
