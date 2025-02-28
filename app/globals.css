@@ -42,6 +42,59 @@ body {
   }
 }
 
+/* Chat Bubble Styles */
+@layer components {
+  /* General Chat Bubble Style */
+  .chat-bubble {
+    @apply px-4 py-3 rounded-lg shadow-md max-w-[80%] relative;
+    background-color: rgba(50, 50, 50, 0.9); /* Darker color */
+    color: #fff; /* Ensure text is readable */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+  }
+
+  /* User Message (Align Right) */
+  .chat-bubble-user {
+    @apply ml-auto text-right bg-blue-600; /* Customize user bubble color */
+    border-radius: 10px 10px 0 10px;
+  }
+
+  /* Bot Message (Align Left) */
+  .chat-bubble-bot {
+    @apply mr-auto text-left bg-gray-700; /* Customize bot bubble color */
+    border-radius: 10px 10px 10px 0;
+  }
+
+  /* Chat Bubble Tail */
+  .chat-bubble-bot::before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    bottom: 5px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 10px 0 0;
+    border-color: rgba(50, 50, 50, 0.9) transparent transparent transparent;
+  }
+
+  .chat-bubble-user::before {
+    content: "";
+    position: absolute;
+    right: -10px;
+    bottom: 5px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 0 10px;
+    border-color: #2563eb transparent transparent transparent; /* Match user bubble color */
+  }
+
+  /* Chat Container */
+  .chat-container {
+    @apply flex flex-col space-y-2 p-4;
+  }
+}
+
 /* Responsive typography */
 @layer base {
   html {
