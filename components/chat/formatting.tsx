@@ -1,4 +1,5 @@
 import { DisplayMessage } from "@/types";
+import React, { useMemo, ComponentProps } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
@@ -7,34 +8,43 @@ import "katex/dist/katex.min.css";
 import { preprocessLaTeX, renderCitations } from "@/utilities/formatting";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
+interface CodeProps extends ComponentProps<"code"> {
+  node?: any;
+}
+
+const CodeBlock: React.FC<CodeProps> = ({ children, className, ...rest }) => {
+  const match = /language-(\w+)/.exec(className || "");
+  return match ? (
+    <SyntaxHighlighter
+      {...rest}
+      PreTag="div"
+      className="rounded-xl"
+      language={match[1]}
+    >
+      {String(children).replace(/\n$/, "")}
+    </SyntaxHighlighter>
+  ) : (
+    <code {...rest} className={className}>
+      {children}
+    </code>
+  );
+};
+
 export function Formatting({ message }: { message: DisplayMessage }) {
-  const processedContent = preprocessLaTeX(message.content);
+  const processedContent = useMemo(() => preprocessLaTeX(message.content), [message.content]);
+
   const components = {
-    code: ({ children, className, node, ...rest }: any) => {
-      const match = /language-(\w+)/.exec(className || "");
-      return match ? (
-        <SyntaxHighlighter
-          {...rest}
-          PreTag="div"
-          className="rounded-xl"
-          children={String(children).replace(/\n$/, "")}
-          language={match[1]}
-        />
-      ) : (
-        <code {...rest} className={className}>
-          {children}
-        </code>
-      );
-    },
-    p: ({ children }: { children: React.ReactNode }) => {
-      return renderCitations(children, message.citations);
-    },
+    code: CodeBlock,
+    p: ({ children }: { children: React.ReactNode }) => (
+      message.citations ? renderCitations(children, message.citations) : <p>{children}</p>
+    ),
   };
+
   return (
     <ReactMarkdown
       remarkPlugins={[remarkGfm, remarkMath]}
       rehypePlugins={[rehypeKatex]}
-      components={components as any}
+      components={components}
       className="gap-3 flex flex-col"
     >
       {processedContent}
