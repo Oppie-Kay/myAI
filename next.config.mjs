@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  future: {
-    webpack5: true, // Ensure Webpack 5 is enabled
+  experimental: {
+    optimizeCss: true, // ✅ Enables Next.js CSS optimization
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {
-      config.resolve.fallback = { fs: false }; // Fixes common Vercel fs issues
+      config.resolve.fallback = { fs: false }; // ✅ Fixes Vercel 'fs' module issues
     }
     return config;
   },
