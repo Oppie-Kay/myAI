@@ -7,7 +7,7 @@ import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
 import { preprocessLaTeX, renderCitations } from "@/utilities/formatting";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism"; // Pick your preferred theme
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism"; // Choose your preferred theme
 
 interface CodeProps extends ComponentProps<"code"> {
   node?: any;
@@ -15,7 +15,8 @@ interface CodeProps extends ComponentProps<"code"> {
   className?: string;
 }
 
-const CodeBlock: React.FC<CodeProps> = ({ children, className, inline, ...rest }) => {
+const CodeBlock: React.FC<CodeProps> = (props) => {
+  const { className, inline, children, ...rest } = props;
   const match = /language-(\w+)/.exec(className || "");
 
   if (inline || !match) {
@@ -29,10 +30,10 @@ const CodeBlock: React.FC<CodeProps> = ({ children, className, inline, ...rest }
   return (
     <SyntaxHighlighter
       {...rest}
-      style={vscDarkPlus} // Choose an appropriate style
-      PreTag="div"
-      className="rounded-xl"
+      style={vscDarkPlus} // Syntax highlighting theme
       language={match[1]}
+      PreTag="pre" // Using 'pre' instead of 'div' for better code block structure
+      className="rounded-xl"
     >
       {String(children).trim()}
     </SyntaxHighlighter>
