@@ -2,10 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 🌍 Base Styles */
+/* 🎨 Theme Colors */
 @layer base {
   :root {
-    /* 🎨 Color Variables */
     --tomato-red: #FF6B35;
     --herb-green: #4A7C59;
     --butter-yellow: #F9DB6D;
@@ -19,13 +18,6 @@
     --border: var(--spice-brown);
     --input: var(--spice-brown);
     --ring: var(--tomato-red);
-
-    /* 📊 Chart Colors */
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
   }
 
   /* 🌙 Dark Mode */
@@ -36,22 +28,18 @@
     --border: #2d2d2d;
     --input: #2d2d2d;
     --ring: var(--butter-yellow);
-    --primary: var(--tomato-red);
-    --secondary: var(--herb-green);
   }
 
-  /* 📜 Apply Global Styles */
   * {
     @apply border-border;
   }
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: var(--font-body), sans-serif;
   }
 
   h1, h2, h3 {
-    font-family: var(--font-heading), cursive;
+    font-family: var(--font-geist-sans), sans-serif;
     font-weight: bold;
     color: var(--tomato-red);
   }
