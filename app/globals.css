@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 /* Base font settings */
 body {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
@@ -12,7 +12,7 @@ body {
 /* Thematic Background for Cooking Assistant */
 body {
   @apply text-foreground;
-  background: url('/images/cooking-world-map.png') no-repeat center center fixed;
+  background: url('/cooking-world-map.png') no-repeat center center fixed;
   background-size: cover;
   background-blend-mode: overlay;
   background-color: rgba(255, 230, 200, 0.6); /* Warm food-inspired tone */
@@ -20,7 +20,7 @@ body {
 
 /* Dark mode adjustments */
 .dark body {
-  background: url('/images/dark-kitchen-pattern.png') no-repeat center center fixed;
+  background: url('/dark-kitchen-pattern.png') no-repeat center center fixed;
   background-size: cover;
   background-blend-mode: overlay;
   background-color: rgba(30, 30, 30, 0.8); /* Dark kitchen ambiance */
