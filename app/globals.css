@@ -15,7 +15,7 @@ body {
   background: url('/cooking-world-map.png') no-repeat center center fixed;
   background-size: cover;
   background-blend-mode: overlay;
-  background-color: rgba(255, 230, 200, 0.6); /* Warm food-inspired tone */
+  background-color: rgba(250, 230, 200, 0.7); /* Softer overlay */
 }
 
 /* Dark mode adjustments */
@@ -50,48 +50,40 @@ body {
     background-color: rgba(50, 50, 50, 0.9); /* Darker color */
     color: #fff; /* Ensure text is readable */
     border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+    animation: fadeIn 0.3s ease-in-out;
   }
 
   /* User Message (Align Right) */
   .chat-bubble-user {
-    @apply ml-auto text-right bg-blue-600; /* Customize user bubble color */
+    @apply ml-auto text-right bg-blue-500 text-white;
     border-radius: 10px 10px 0 10px;
   }
 
   /* Bot Message (Align Left) */
   .chat-bubble-bot {
-    @apply mr-auto text-left bg-gray-700; /* Customize bot bubble color */
+    @apply mr-auto text-left bg-gray-200 text-gray-800; 
     border-radius: 10px 10px 10px 0;
   }
 
-  /* Chat Bubble Tail */
-  .chat-bubble-bot::before {
-    content: "";
-    position: absolute;
-    left: -10px;
-    bottom: 5px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 10px 10px 0 0;
-    border-color: rgba(50, 50, 50, 0.9) transparent transparent transparent;
-  }
-
-  .chat-bubble-user::before {
-    content: "";
-    position: absolute;
-    right: -10px;
-    bottom: 5px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 10px 0 0 10px;
-    border-color: #2563eb transparent transparent transparent; /* Match user bubble color */
-  }
-
-  /* Chat Container */
+  /* Chat Container with Shadow */
   .chat-container {
-    @apply flex flex-col space-y-2 p-4;
+    @apply flex flex-col space-y-2 p-4 rounded-lg;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Chat Input Box */
+  .chat-input {
+    @apply w-full p-3 rounded-full border border-gray-300 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500;
+  }
+
+  /* Clear Chat Button */
+  .clear-chat-btn {
+    @apply px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-all duration-300;
+  }
+
+  /* Footer Text */
+  .footer-text {
+    @apply text-xs text-gray-500 opacity-75;
   }
 }
 
@@ -120,4 +112,10 @@ body {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+/* Chat Bubble Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
 }
