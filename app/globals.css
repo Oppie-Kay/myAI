@@ -16,6 +16,7 @@ body {
   background-size: cover;
   background-blend-mode: overlay;
   background-color: rgba(250, 230, 200, 0.7); /* Softer overlay */
+  backdrop-filter: blur(4px); /* Subtle blur effect for readability */
 }
 
 /* Dark mode adjustments */
@@ -46,34 +47,69 @@ body {
 @layer components {
   /* General Chat Bubble Style */
   .chat-bubble {
-    @apply px-4 py-3 rounded-lg shadow-md max-w-[80%] relative;
-    background-color: rgba(50, 50, 50, 0.9); /* Darker color */
+    @apply px-4 py-3 rounded-xl shadow-lg max-w-[75%] relative;
+    background-color: rgba(50, 50, 50, 0.85); /* Darker color for depth */
     color: #fff; /* Ensure text is readable */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+    border: 1px solid rgba(255, 255, 255, 0.2);
     animation: fadeIn 0.3s ease-in-out;
   }
 
   /* User Message (Align Right) */
   .chat-bubble-user {
-    @apply ml-auto text-right bg-blue-500 text-white;
-    border-radius: 10px 10px 0 10px;
+    @apply ml-auto text-right bg-orange-500 text-white;
+    border-radius: 18px 18px 5px 18px;
+    box-shadow: 2px 4px 10px rgba(255, 136, 0, 0.2);
   }
 
   /* Bot Message (Align Left) */
   .chat-bubble-bot {
-    @apply mr-auto text-left bg-gray-200 text-gray-800; 
-    border-radius: 10px 10px 10px 0;
+    @apply mr-auto text-left bg-gray-100 text-gray-900;
+    border-radius: 18px 18px 18px 5px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
   }
 
   /* Chat Container with Shadow */
   .chat-container {
-    @apply flex flex-col space-y-2 p-4 rounded-lg;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    @apply flex flex-col space-y-3 p-4 rounded-lg;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
   }
 
   /* Chat Input Box */
   .chat-input {
-    @apply w-full p-3 rounded-full border border-gray-300 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500;
+    @apply w-full p-3 rounded-full border border-gray-300 shadow-md;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .chat-input:focus {
+    border-color: #ff8800;
+    box-shadow: 0 0 12px rgba(255, 136, 0, 0.3);
+  }
+
+  /* Send Button */
+  .send-button {
+    @apply px-4 py-2 bg-orange-500 text-white rounded-full;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .send-button:hover {
+    background: #ff6600;
+    transform: scale(1.05);
+  }
+
+  /* Quick-Action Buttons */
+  .quick-action {
+    @apply px-4 py-2 rounded-full text-white text-sm font-semibold;
+    background: #0073e6;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
+
+  .quick-action:hover {
+    background: #005bb5;
+    transform: scale(1.05);
   }
 
   /* Clear Chat Button */
