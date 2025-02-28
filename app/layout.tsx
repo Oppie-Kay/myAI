@@ -15,6 +15,11 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+const cookingFont = localFont({
+  src: "./fonts/CookingFont.woff",
+  variable: "--font-cooking",
+  weight: "100 900",
+});
 
 export const metadata: Metadata = {
   title: "Chef's Assistant | Your Kitchen Companion",
