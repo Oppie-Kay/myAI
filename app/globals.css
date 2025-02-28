@@ -15,8 +15,7 @@ body {
   background: url('/cooking-world-map.png') no-repeat center center fixed;
   background-size: cover;
   background-blend-mode: overlay;
-  background-color: rgba(250, 230, 200, 0.7); /* Softer overlay */
-  backdrop-filter: blur(4px); /* Subtle blur effect for readability */
+  background-color: rgba(255, 230, 200, 0.6); /* Warm food-inspired tone */
 }
 
 /* Dark mode adjustments */
@@ -47,79 +46,52 @@ body {
 @layer components {
   /* General Chat Bubble Style */
   .chat-bubble {
-    @apply px-4 py-3 rounded-xl shadow-lg max-w-[75%] relative;
-    background-color: rgba(50, 50, 50, 0.85); /* Darker color for depth */
+    @apply px-4 py-3 rounded-lg shadow-md max-w-[80%] relative;
+    background-color: rgba(50, 50, 50, 0.9); /* Darker color */
     color: #fff; /* Ensure text is readable */
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    animation: fadeIn 0.3s ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
   }
 
   /* User Message (Align Right) */
   .chat-bubble-user {
-    @apply ml-auto text-right bg-orange-500 text-white;
-    border-radius: 18px 18px 5px 18px;
-    box-shadow: 2px 4px 10px rgba(255, 136, 0, 0.2);
+    @apply ml-auto text-right bg-blue-600; /* Customize user bubble color */
+    border-radius: 10px 10px 0 10px;
   }
 
   /* Bot Message (Align Left) */
   .chat-bubble-bot {
-    @apply mr-auto text-left bg-gray-100 text-gray-900;
-    border-radius: 18px 18px 18px 5px;
-    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+    @apply mr-auto text-left bg-gray-700; /* Customize bot bubble color */
+    border-radius: 10px 10px 10px 0;
   }
 
-  /* Chat Container with Shadow */
+  /* Chat Bubble Tail */
+  .chat-bubble-bot::before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    bottom: 5px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 10px 0 0;
+    border-color: rgba(50, 50, 50, 0.9) transparent transparent transparent;
+  }
+
+  .chat-bubble-user::before {
+    content: "";
+    position: absolute;
+    right: -10px;
+    bottom: 5px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 0 10px;
+    border-color: #2563eb transparent transparent transparent; /* Match user bubble color */
+  }
+
+  /* Chat Container */
   .chat-container {
-    @apply flex flex-col space-y-3 p-4 rounded-lg;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-  }
-
-  /* Chat Input Box */
-  .chat-input {
-    @apply w-full p-3 rounded-full border border-gray-300 shadow-md;
-    font-size: 1rem;
-    transition: all 0.3s ease-in-out;
-  }
-
-  .chat-input:focus {
-    border-color: #ff8800;
-    box-shadow: 0 0 12px rgba(255, 136, 0, 0.3);
-  }
-
-  /* Send Button */
-  .send-button {
-    @apply px-4 py-2 bg-orange-500 text-white rounded-full;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-  }
-
-  .send-button:hover {
-    background: #ff6600;
-    transform: scale(1.05);
-  }
-
-  /* Quick-Action Buttons */
-  .quick-action {
-    @apply px-4 py-2 rounded-full text-white text-sm font-semibold;
-    background: #0073e6;
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
-  }
-
-  .quick-action:hover {
-    background: #005bb5;
-    transform: scale(1.05);
-  }
-
-  /* Clear Chat Button */
-  .clear-chat-btn {
-    @apply px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-all duration-300;
-  }
-
-  /* Footer Text */
-  .footer-text {
-    @apply text-xs text-gray-500 opacity-75;
+    @apply flex flex-col space-y-2 p-4;
   }
 }
 
@@ -148,10 +120,4 @@ body {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
-}
-
-/* Chat Bubble Animation */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
 }
