@@ -1,102 +1,136 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* 🎨 Theme Colors */
+ 
+/* Base font settings */
+body {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+ 
+@layer utilities {
+  /* Text utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+  /* Common utility classes can be added here */
+  .content-wrapper {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+ 
 @layer base {
   :root {
-    --tomato-red: #FF6B35;
-    --herb-green: #4A7C59;
-    --butter-yellow: #F9DB6D;
-    --cream: #FFF8E8;
-    --spice-brown: #5A4B41;
-
-    /* 🌗 Light Mode */
-    --background: var(--cream);
-    --foreground: var(--spice-brown);
-    --card: var(--cream);
-    --border: var(--spice-brown);
-    --input: var(--spice-brown);
-    --ring: var(--tomato-red);
+    /* Core colors */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    /* Component colors */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    /* Semantic colors */
+    --primary: 222 47% 11%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    /* Border and input colors */
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 222 47% 11%;
+    /* Data visualization colors (more distinct) */
+    --chart-1: 222 89% 58%;  /* Blue */
+    --chart-2: 143 55% 48%;  /* Green */
+    --chart-3: 24 75% 55%;   /* Orange */
+    --chart-4: 262 60% 55%;  /* Purple */
+    --chart-5: 340 82% 59%;  /* Pink */
+    --chart-6: 194 80% 45%;  /* Teal */
+    /* Rounded corners */
+    --radius: 0.5rem;
   }
-
-  /* 🌙 Dark Mode */
+ 
   .dark {
-    --background: #121212;
-    --foreground: #f8f8f8;
-    --card: #1e1e1e;
-    --border: #2d2d2d;
-    --input: #2d2d2d;
-    --ring: var(--butter-yellow);
+    /* Core colors */
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    /* Component colors */
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    /* Semantic colors */
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 217 32% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 32% 17%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+    /* Border and input colors */
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 212 40% 86%;
+    /* Data visualization colors (adjusted for dark mode) */
+    --chart-1: 214 100% 70%;  /* Blue */
+    --chart-2: 142 77% 65%;   /* Green */
+    --chart-3: 32 95% 65%;    /* Orange */
+    --chart-4: 273 100% 75%;  /* Purple */
+    --chart-5: 336 100% 70%;  /* Pink */
+    --chart-6: 195 80% 65%;   /* Teal */
   }
-
+}
+ 
+/* Apply border styles and background consistently */
+@layer base {
   * {
     @apply border-border;
   }
-
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground;
   }
-
-  h1, h2, h3 {
-    font-family: var(--font-geist-sans), sans-serif;
-    font-weight: bold;
-    color: var(--tomato-red);
+  /* Improved focus styles for accessibility */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
   }
-}
-
-/* 💬 Chat Bubbles */
-@layer components {
-  .chat-container {
-    @apply min-h-screen py-4 px-2 flex flex-col gap-4 bg-cream;
-  }
-
-  .chat-bubble {
-    @apply px-4 py-3 rounded-lg max-w-[75%] text-lg shadow-md;
-    transition: transform 0.2s ease-in-out;
-  }
-
-  .user-bubble {
-    @apply bg-herb-green text-white ml-auto border border-herb-green;
-    border-top-right-radius: 0;
-  }
-
-  .bot-bubble {
-    @apply bg-cream text-spice-brown border-2 border-butter-yellow;
-    border-top-left-radius: 0;
+  /* Headings with consistent styling */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium tracking-tight;
   }
 }
-
-/* ⌨️ Typing Indicator */
-@layer components {
-  .typing-indicator {
-    @apply flex gap-2 p-2 items-center;
+ 
+/* Adding responsive typography scale */
+@layer base {
+  html {
+    font-size: 16px;
   }
-
-  .typing-indicator span {
-    @apply w-2 h-2 bg-butter-yellow rounded-full;
-    animation: typing 1.5s infinite ease-in-out;
+  @screen sm {
+    html {
+      font-size: 16px;
+    }
   }
-
-  .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
-  .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
-
-  @keyframes typing {
-    0%, 100% { opacity: 0.3; transform: translateY(0); }
-    50% { opacity: 1; transform: translateY(-4px); }
+  @screen md {
+    html {
+      font-size: 16.5px;
+    }
+  }
+  @screen lg {
+    html {
+      font-size: 17px;
+    }
   }
 }
-
-@layer components {
-  .btn-primary {
-    @apply bg-tomato-red text-white px-4 py-2 rounded-lg shadow-md transition-all;
-  }
-
-  .btn-primary:hover {
-    background-color: #E63900;
-  }
-
-  .btn-secondary {
-    @apply bg-herb-green text-white px-4 py-2 rounded-lg shadow-md;
-  }
+ 
+/* Add smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
