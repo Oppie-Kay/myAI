@@ -40,10 +40,13 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider> {/* Wrap your entire app in ThemeProvider */}
           <TooltipProvider>
-            {/* 🔥 Added Header with Theme Toggle Button */}
+            {/* 🔥 Added Header with Debugging Text */}
             <div className="gradient-header flex justify-between items-center p-4 bg-white dark:bg-gray-900">
               <h1 className="text-xl font-bold text-black dark:text-white">Chef's Assistant</h1>
-              <ThemeToggleButton /> {/* 🔥 Dark Mode Toggle Button */}
+              <div className="flex items-center gap-4">
+                <ThemeToggleButton /> {/* 🔥 Dark Mode Toggle Button */}
+                <span className="text-red-500">Debug: Toggle Button Here</span> {/* 🔥 Debugging Text */}
+              </div>
             </div>
 
             <div className="chat-container bg-white text-black dark:bg-gray-900 dark:text-white">
