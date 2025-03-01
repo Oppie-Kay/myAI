@@ -43,9 +43,9 @@ export default function RootLayout({
             {/* 🔥 Added Header with Debugging Text */}
             <div className="gradient-header flex justify-between items-center p-4 bg-white dark:bg-gray-900">
               <h1 className="text-xl font-bold text-black dark:text-white">Chef's Assistant</h1>
-              <div className="flex items-center gap-4">
-                <ThemeToggleButton /> {/* 🔥 Dark Mode Toggle Button */}
-                <span className="text-red-500">Debug: Toggle Button Here</span> {/* 🔥 Debugging Text */}
+              <div className="flex items-center gap-4 border border-red-500 p-2"> {/* 🔥 Debugging border */}
+                <ThemeToggleButton />  {/* 🔥 Dark Mode Toggle Button */}
+                <span className="text-red-500">Debug: Toggle Button Here</span> {/* Debugging Text */}
               </div>
             </div>
 
