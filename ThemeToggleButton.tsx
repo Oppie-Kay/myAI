@@ -1,6 +1,6 @@
 "use client"; // 🚨 Mark as Client Component
 
-import { useTheme } from "../ThemeProvider"; // Adjust path if needed
+import { useTheme } from "./ThemeProvider"; // 
 import { Moon, Sun } from "lucide-react"; // Install with: npm install lucide-react
 
 const ThemeToggleButton = () => {
