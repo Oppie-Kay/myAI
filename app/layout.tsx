@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { ErrorWrapper } from "./parts/error/error-wrapper";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "../ThemeProvider"; // Import ThemeProvider
+import ThemeToggleButton from "../ThemeToggleButton"; // ✅ Import Theme Toggle Button
 import "./globals.css";
 
 const geistSans = localFont({
@@ -39,7 +40,12 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider> {/* Wrap your entire app in ThemeProvider */}
           <TooltipProvider>
-            <div className="gradient-header"></div>
+            {/* 🔥 Added Header with Theme Toggle Button */}
+            <div className="gradient-header flex justify-between items-center p-4 bg-white dark:bg-gray-900">
+              <h1 className="text-xl font-bold text-black dark:text-white">Chef's Assistant</h1>
+              <ThemeToggleButton /> {/* 🔥 Dark Mode Toggle Button */}
+            </div>
+
             <div className="chat-container bg-white text-black dark:bg-gray-900 dark:text-white">
               <ErrorWrapper>{children}</ErrorWrapper>
             </div>
@@ -67,4 +73,3 @@ export default function RootLayout({
     </html>
   );
 }
-
