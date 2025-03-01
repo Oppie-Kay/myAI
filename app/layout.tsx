@@ -20,7 +20,8 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Chef's Assistant | Your Kitchen Companion",
-  description: "Get cooking tips, recipes, and culinary inspiration with our AI kitchen assistant",
+  description:
+    "Get cooking tips, recipes, and culinary inspiration with our AI kitchen assistant",
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-icon.png",
@@ -32,10 +33,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
-      <body className={${geistSans.variable} ${geistMono.variable} antialiased}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <TooltipProvider>
           <div className="gradient-header"></div>
           <div className="chat-container">
@@ -55,7 +58,10 @@ export default function RootLayout({
                 role="img"
                 aria-label="Simmering cooking pot icon"
               >
-                <path d="M15 5V19H9V5H15ZM15 3H9C7.9 3 7 3.9 7 5V19C7 20.1 7.9 21 9 21H15C16.1 21 17 20.1 17 19V5C17 3.9 16.1 3 15 3ZM12 18C12.55 18 13 17.55 13 17C13 16.45 12.55 16 12 16C11.45 16 11 16.45 11 17C11 17.55 11.45 18 12 18Z" fill="#5A4B41"/>
+                <path
+                  d="M15 5V19H9V5H15ZM15 3H9C7.9 3 7 3.9 7 5V19C7 20.1 7.9 21 9 21H15C16.1 21 17 20.1 17 19V5C17 3.9 16.1 3 15 3ZM12 18C12.55 18 13 17.55 13 17C13 16.45 12.55 16 12 16C11.45 16 11 16.45 11 17C11 17.55 11.45 18 12 18Z"
+                  fill="#5A4B41"
+                />
               </svg>
             </div>
           </nav>
