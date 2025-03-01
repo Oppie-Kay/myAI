@@ -7,14 +7,17 @@ import { useEffect } from "react";
 const ThemeToggleButton = () => {
   const { theme, toggleTheme } = useTheme();
 
-  // 🔥 Debugging Log
+  // 🔥 Debugging Log: Check if the component renders
   useEffect(() => {
-    console.log("🚀 ThemeToggleButton is rendering! Theme:", theme);
+    console.log("🚀 ThemeToggleButton is rendering! Current Theme:", theme);
   }, [theme]);
 
   return (
     <button
-      onClick={toggleTheme}
+      onClick={() => {
+        console.log("🛑 Button clicked!"); // 🔥 Debugging Clicks
+        toggleTheme();
+      }}
       className="p-3 rounded-lg bg-red-500 text-white dark:bg-green-500 border border-white"
       aria-label="Toggle Theme"
     >
