@@ -54,38 +54,39 @@ body {
 
   /* User Message (Align Right) */
   .chat-bubble-user {
-    @apply ml-auto text-right bg-blue-600; /* Customize user bubble color */
-    border-radius: 10px 10px 0 10px;
+    @apply ml-auto text-right bg-blue-600 relative;
+    border-radius: 12px 12px 0 12px;
   }
 
   /* Bot Message (Align Left) */
   .chat-bubble-bot {
-    @apply mr-auto text-left bg-gray-700; /* Customize bot bubble color */
-    border-radius: 10px 10px 10px 0;
+    @apply mr-auto text-left bg-gray-700 relative;
+    border-radius: 12px 12px 12px 0;
   }
 
-  /* Chat Bubble Tail */
-  .chat-bubble-bot::before {
+  /* Chat Bubble Tail - Bot */
+  .chat-bubble-bot::after {
     content: "";
     position: absolute;
     left: -10px;
-    bottom: 5px;
+    bottom: 8px;
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 10px 10px 0 0;
+    border-width: 10px 12px 0 0;
     border-color: rgba(50, 50, 50, 0.9) transparent transparent transparent;
   }
 
-  .chat-bubble-user::before {
+  /* Chat Bubble Tail - User */
+  .chat-bubble-user::after {
     content: "";
     position: absolute;
     right: -10px;
-    bottom: 5px;
+    bottom: 8px;
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 10px 0 0 10px;
+    border-width: 10px 0 0 12px;
     border-color: #2563eb transparent transparent transparent; /* Match user bubble color */
   }
 
