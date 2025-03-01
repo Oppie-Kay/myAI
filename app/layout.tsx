@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { ErrorWrapper } from "./parts/error/error-wrapper";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { ThemeProvider } from "./ThemeProvider"; // Import ThemeProvider
-import ThemeToggleButton from "./ThemeToggleButton"; // ✅ Import Theme Toggle Button
+import { ThemeProvider } from "../ThemeProvider"; // Import ThemeProvider
+import ThemeToggleButton from "../ThemeToggleButton"; // ✅ Import Theme Toggle Button
 import "./globals.css";
 
 const geistSans = localFont({
