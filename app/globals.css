@@ -44,55 +44,55 @@ body {
 
 /* Chat Bubble Styles */
 @layer components {
-  /* General Chat Bubble Style */
+  /* Chat container */
+  .chat-container {
+    @apply flex flex-col space-y-3 p-4 max-w-lg mx-auto;
+  }
+
+  /* General chat bubble style */
   .chat-bubble {
-    @apply px-4 py-3 rounded-lg shadow-md max-w-[80%] relative;
-    background-color: rgba(50, 50, 50, 0.9); /* Darker color */
-    color: #fff; /* Ensure text is readable */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+    @apply px-4 py-3 shadow-md max-w-[75%] relative text-sm leading-relaxed;
   }
 
   /* User Message (Align Right) */
   .chat-bubble-user {
-    @apply ml-auto text-right bg-blue-600 relative;
-    border-radius: 12px 12px 0 12px;
+    @apply ml-auto bg-blue-600 text-white rounded-2xl rounded-br-sm;
   }
 
   /* Bot Message (Align Left) */
   .chat-bubble-bot {
-    @apply mr-auto text-left bg-gray-700 relative;
-    border-radius: 12px 12px 12px 0;
+    @apply mr-auto bg-gray-700 text-white rounded-2xl rounded-bl-sm;
   }
 
-  /* Chat Bubble Tail - Bot */
+  /* Speech bubble tail - Bot */
   .chat-bubble-bot::after {
     content: "";
     position: absolute;
-    left: -10px;
+    left: -8px;
     bottom: 8px;
     width: 0;
     height: 0;
     border-style: solid;
     border-width: 10px 12px 0 0;
-    border-color: rgba(50, 50, 50, 0.9) transparent transparent transparent;
+    border-color: rgba(55, 65, 81, 1) transparent transparent transparent;
   }
 
-  /* Chat Bubble Tail - User */
+  /* Speech bubble tail - User */
   .chat-bubble-user::after {
     content: "";
     position: absolute;
-    right: -10px;
+    right: -8px;
     bottom: 8px;
     width: 0;
     height: 0;
     border-style: solid;
     border-width: 10px 0 0 12px;
-    border-color: #2563eb transparent transparent transparent; /* Match user bubble color */
+    border-color: rgba(37, 99, 235, 1) transparent transparent transparent;
   }
 
-  /* Chat Container */
-  .chat-container {
-    @apply flex flex-col space-y-2 p-4;
+  /* Chat input box */
+  .chat-input {
+    @apply w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500;
   }
 }
 
