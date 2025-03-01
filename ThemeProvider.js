@@ -1,3 +1,5 @@
+"use client"; // 🚨 This makes it a Client Component
+
 import { createContext, useEffect, useState, useContext } from "react";
 
 const ThemeContext = createContext();
