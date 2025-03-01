@@ -6,6 +6,8 @@ import { ThemeProvider } from "../ThemeProvider"; // Import ThemeProvider
 import ThemeToggleButton from "../ThemeToggleButton"; // ✅ Import Theme Toggle Button
 import "./globals.css";
 
+console.log("🔥 layout.tsx is loading..."); // Debugging Log
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -35,12 +37,13 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  console.log("✅ RootLayout is rendering..."); // Debugging Log
+
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider> {/* Wrap your entire app in ThemeProvider */}
           <TooltipProvider>
-            {/* 🔥 Added Header with Debugging Text */}
             <div className="gradient-header flex justify-between items-center p-4 bg-white dark:bg-gray-900">
               <h1 className="text-xl font-bold text-black dark:text-white">Chef's Assistant</h1>
               <div className="flex items-center gap-4 border border-red-500 p-2"> {/* 🔥 Debugging border */}
