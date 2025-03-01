@@ -10,20 +10,35 @@ body {
 }
 
 /* Thematic Background for Cooking Assistant */
-body {
+html, body {
   @apply text-foreground;
+  height: 100%;
+  margin: 0;
+  padding: 0;
   background: url('/cooking-world-map.png') no-repeat center center fixed;
   background-size: cover;
-  background-blend-mode: overlay;
-  background-color: rgba(255, 230, 200, 0.6); /* Warm food-inspired tone */
+  background-color: #f5e4c3; /* Warm, food-inspired tone */
+  background-blend-mode: soft-light;
+}
+
+/* Fix for any white gaps on top/bottom */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  z-index: -1;
 }
 
 /* Dark mode adjustments */
-.dark body {
+.dark html, .dark body {
   background: url('/dark-kitchen-pattern.png') no-repeat center center fixed;
   background-size: cover;
-  background-blend-mode: overlay;
-  background-color: rgba(30, 30, 30, 0.8); /* Dark kitchen ambiance */
+  background-color: #1e1e1e; /* Dark kitchen ambiance */
+  background-blend-mode: soft-light;
 }
 
 /* Ensure text remains readable over backgrounds */
